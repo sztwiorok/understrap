@@ -22,11 +22,9 @@ RUN npm install -g gulp && \
 
 FROM wordpress
 
-RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
-    chmod +x wp-cli.phar && \
-    php wp-cli.phar core download --allow-root --force --skip-content
-
-COPY --from=node /tmp/build/dist /var/www/html/wp-content/themes/kacper
+COPY --from=node /tmp/build /tmp/build
+ADD start.sh /usr/local/bin/start.sh
+RUN chmod +x /usr/local/bin/start.sh
 
 # Expose a port to run on
 EXPOSE 80
