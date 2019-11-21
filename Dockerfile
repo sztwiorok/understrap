@@ -22,7 +22,7 @@ RUN npm install -g gulp && \
 
 FROM wordpress
 
-COPY --from=node /tmp/build /var/www/html/wp-content
+COPY --from=node /tmp/build/dist /var/www/html/wp-content/themes/lubieto
 
 # Expose a port to run on
 EXPOSE 80
