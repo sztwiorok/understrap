@@ -12,6 +12,12 @@ RUN composer install --no-scripts --no-autoloader
 # COPY ./ /var/www/
 RUN composer dump-autoload --optimize
 
+FROM node:6 as node
+
+RUN npm install -g gulp && \
+    npm install && \
+    gulp compile
+
 FROM wordpress
 
 COPY --from=composer /var/www/html/wp-content /var/www/html/wp-content
