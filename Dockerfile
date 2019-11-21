@@ -14,9 +14,7 @@
 
 FROM node:6 as node
 
-RUN npm install -g gulp && \
-    npm install && \
-    gulp compile
+RUN npm install -g gulp
 
 FROM wordpress
 
