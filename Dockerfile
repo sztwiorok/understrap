@@ -14,7 +14,7 @@ RUN composer dump-autoload --optimize
 
 FROM wordpress
 
-COPY --from=build /var/www/html/wp-content /var/www/html/wp-content
+COPY --from=composer /var/www/html/wp-content /var/www/html/wp-content
 
 # Expose a port to run on
 EXPOSE 80
